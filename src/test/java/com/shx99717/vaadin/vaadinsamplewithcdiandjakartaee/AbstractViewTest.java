@@ -1,4 +1,4 @@
-package org.vaadin.example;
+package com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee;
 
 import org.junit.Assert;
 import org.junit.Before;
