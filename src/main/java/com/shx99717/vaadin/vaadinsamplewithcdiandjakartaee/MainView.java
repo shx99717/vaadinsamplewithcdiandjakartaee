@@ -1,4 +1,4 @@
-package org.vaadin.example;
+package com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee;
 
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.button.Button;
@@ -17,7 +17,7 @@ import javax.inject.Inject;
  * The main view contains a simple label element and a template element.
  */
 @Route("")
-@PWA(name = "Project Base for Vaadin Flow with CDI", shortName = "Project Base", enableInstallPrompt = false)
+@PWA(name = "Project base for CDI and JakartaEE", shortName = "Vaadin Sample With CDI And JakartaEE", enableInstallPrompt = false)
 @CssImport("./styles/shared-styles.css")
 @CssImport(value = "./styles/vaadin-text-field-styles.css", themeFor = "vaadin-text-field")
 public class MainView extends VerticalLayout {

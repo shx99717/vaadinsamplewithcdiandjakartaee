@@ -1,4 +1,4 @@
-package org.vaadin.example;
+package com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee;
 
 import com.vaadin.cdi.annotation.VaadinSessionScoped;
 
@@ -12,7 +12,7 @@ public class GreetService {
         if (name == null || name.isEmpty()) {
             return "Hello anonymous user";
         } else {
-            return "Hello " + name;
+            return "Hello c " + name;
         }
     }
 }
