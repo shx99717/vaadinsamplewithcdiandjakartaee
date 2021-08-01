@@ -100,9 +100,9 @@
             <artifactId>vaadin-cdi</artifactId>
         </dependency>
         <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-api</artifactId>
-            <version>7.0</version>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-api</artifactId>
+            <version>8.0.0</version>
             <scope>provided</scope>
         </dependency>
 
@@ -126,7 +126,8 @@
             <plugin>
                 <groupId>org.apache.tomee.maven</groupId>
                 <artifactId>tomee-maven-plugin</artifactId>
-                <version>7.1.1</version>
+                <!-- Apache TomEE 8.0 is certified for Jakarta EE 8 / Java EE 8 -->
+                <version>8.0.6</version>
                 <configuration>
                     <tomeeClassifier>webprofile</tomeeClassifier>
                     <context>ROOT</context>
