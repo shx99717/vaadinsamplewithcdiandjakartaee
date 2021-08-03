@@ -41,3 +41,12 @@ In such case, the application must be restarted to remove the route from the reg
 For documentation on using Vaadin Flow and CDI, visit [vaadin.com/docs](https://vaadin.com/docs/v14/flow/cdi/tutorial-cdi-basic.html)
 
 For more information on Vaadin Flow, visit https://vaadin.com/flow.
+
+
+### Debug while using `tomee-maven-plugin`
+
+Start the server in debug mode
+```
+mvn package tomee:debug
+```
+It will wait for a debugger to attach to the port 5005 
