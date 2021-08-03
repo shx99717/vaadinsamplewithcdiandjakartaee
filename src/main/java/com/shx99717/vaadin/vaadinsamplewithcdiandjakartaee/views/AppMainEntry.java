@@ -1,6 +1,6 @@
 package com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.views;
 
-import com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.views.foundation_exercise.FoundationExerciseView;
+import com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.views.foundation.TryFlexLayoutView;
 import com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.views.hello_world.HelloWorldView;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
@@ -22,7 +22,7 @@ public class AppMainEntry extends AppLayout {
         tabs.setOrientation(Tabs.Orientation.VERTICAL);
         tabs.addThemeVariants(TabsVariant.LUMO_MINIMAL);
         tabs.add(createTab("Hello World", HelloWorldView.class));
-        tabs.add(createTab("Vaadin Foundation Exercise", FoundationExerciseView.class));
+        tabs.add(createTab("Try flex layout", TryFlexLayoutView.class));
         
         VerticalLayout drawerContent = new VerticalLayout();
         drawerContent.add(tabs);
