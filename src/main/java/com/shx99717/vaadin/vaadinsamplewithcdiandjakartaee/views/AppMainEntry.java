@@ -6,6 +6,7 @@ import com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.views.foundation.TryF
 import com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.views.foundation.TryFormDatabindingUnbufferedWayView;
 import com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.views.foundation.TryFormLayoutView;
 import com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.views.foundation.TryFormValidationView;
+import com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.views.foundation.TryGridBasicView;
 import com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.views.foundation.TryVaadinBoardView;
 import com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.views.foundation.TryVerySimpleCustomComponentView;
 import com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.views.hello_world.HelloWorldView;
@@ -37,6 +38,7 @@ public class AppMainEntry extends AppLayout {
         tabs.add(createTab("Try form validation", TryFormValidationView.class));
         tabs.add(createTab("Try form conversion", TryFormConversionView.class));
         tabs.add(createTab("Try very simple custom component", TryVerySimpleCustomComponentView.class));
+        tabs.add(createTab("Try grid basic", TryGridBasicView.class));
         
         VerticalLayout drawerContent = new VerticalLayout();
         drawerContent.add(tabs);

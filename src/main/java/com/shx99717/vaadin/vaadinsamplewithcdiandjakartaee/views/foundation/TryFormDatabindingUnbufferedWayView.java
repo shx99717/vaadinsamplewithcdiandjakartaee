@@ -1,5 +1,6 @@
 package com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.views.foundation;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 
 import org.slf4j.Logger;
@@ -190,7 +191,7 @@ public class TryFormDatabindingUnbufferedWayView extends VerticalLayout {
 
     
     private Student getDummyStudent() {
-        Student student = new Student("Mike", "Moose", 31, "mike.moose@dummy.com", getDummyAddress(), StudentType.INTERNATIONAL);
+        Student student = new Student("Mike", "Moose", 31, "mike.moose@dummy.com", getDummyAddress(), LocalDate.now(), StudentType.INTERNATIONAL);
         return student;
     }
     
