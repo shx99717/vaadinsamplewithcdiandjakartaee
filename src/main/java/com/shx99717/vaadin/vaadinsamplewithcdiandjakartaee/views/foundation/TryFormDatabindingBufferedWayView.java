@@ -168,7 +168,7 @@ public class TryFormDatabindingBufferedWayView extends VerticalLayout {
         //**********************************
         // Reading and writing values
         //**********************************
-        // Approach 1: Unbuffered reading and writing
+        // Buffered reading and writing
         Student dummyStudent = getDummyStudent();
         Button readBeanButton = new Button("Display Fields by Bean's value");
         readBeanButton.addClickListener(e -> {

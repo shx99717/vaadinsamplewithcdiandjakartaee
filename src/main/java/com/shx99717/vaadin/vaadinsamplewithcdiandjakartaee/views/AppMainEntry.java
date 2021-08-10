@@ -4,6 +4,7 @@ import com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.views.foundation.TryF
 import com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.views.foundation.TryFormDatabindingBufferedWayView;
 import com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.views.foundation.TryFormDatabindingUnbufferedWayView;
 import com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.views.foundation.TryFormLayoutView;
+import com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.views.foundation.TryFormValidationView;
 import com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.views.foundation.TryVaadinBoardView;
 import com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.views.hello_world.HelloWorldView;
 import com.vaadin.flow.component.Component;
@@ -31,6 +32,7 @@ public class AppMainEntry extends AppLayout {
         tabs.add(createTab("Try Vaadin board", TryVaadinBoardView.class));
         tabs.add(createTab("Try form databinding unbuffered way", TryFormDatabindingUnbufferedWayView.class));
         tabs.add(createTab("Try form databinding buffered way", TryFormDatabindingBufferedWayView.class));
+        tabs.add(createTab("Try form validation", TryFormValidationView.class));
         
         VerticalLayout drawerContent = new VerticalLayout();
         drawerContent.add(tabs);

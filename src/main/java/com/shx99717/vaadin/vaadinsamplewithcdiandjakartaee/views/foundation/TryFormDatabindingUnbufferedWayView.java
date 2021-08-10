@@ -167,7 +167,7 @@ public class TryFormDatabindingUnbufferedWayView extends VerticalLayout {
         //**********************************
         // Reading and writing values
         //**********************************
-        // Approach 1: Unbuffered reading and writing
+        // Unbuffered reading and writing
         Student dummyStudent = getDummyStudent();
         binder.setBean(dummyStudent); // Set the dummyStudent instance as a data source for the binder
         
