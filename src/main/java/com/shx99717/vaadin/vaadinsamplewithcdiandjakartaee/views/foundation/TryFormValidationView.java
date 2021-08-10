@@ -38,6 +38,8 @@ public class TryFormValidationView extends VerticalLayout {
         addStudentForm2();
         
         addStudentForm3();
+        
+        addStudentForm4();
     }
 
     private void addStudentForm1() {
@@ -221,6 +223,42 @@ public class TryFormValidationView extends VerticalLayout {
          binder.forField(email).bind("email");
          binder.forField(studentType).bind("type");
          
+    }
+    
+    
+    private void addStudentForm4() {
+        TextField firstName = new TextField("First Name");
+        TextField secondName = new TextField("Last Name");
+        IntegerField age = new IntegerField("Age");
+        EmailField email = new EmailField("Email");
+        Select<StudentType> studentType = new Select<>();
+        
+        
+        H1 h1 = new H1("Student Form Validation - Client side validation");
+        FormLayout formLayout = new FormLayout();
+        
+        studentType.setLabel("Student Type");
+        studentType.setItems(Arrays.asList(StudentType.values()));
+        
+        
+        formLayout.add(firstName, secondName, age, email, studentType);
+        
+        Paragraph paragraph = new Paragraph();
+        paragraph.setText("Client side validation happens only on the client side, it doesn't go through the binder, do NOT use the client side validation and server side validation together(Avoid client-side validations when using Binder, suggest to use Binder only)");
+        add(h1, paragraph, formLayout);
+
+        // Define client side validation on fields
+        firstName.setRequired(true);
+        firstName.setMinLength(5);
+        firstName.setMaxLength(50);
+        firstName.setErrorMessage("First name client side error message");
+        
+        age.setMin(0);
+        age.setMax(120);
+        age.setErrorMessage("Age must be inbetween 0 and 120");
+        
+        
+        
     }
 
 }
