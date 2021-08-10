@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 
 import com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.views.AppMainEntry;
 import com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.views.component.DateTimePicker;
+import com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.views.component.ToggleButton;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
@@ -19,13 +20,14 @@ public class TryVerySimpleCustomComponentView extends VerticalLayout {
     public TryVerySimpleCustomComponentView() {
         H1 customComponent1H1 = new H1("DateTimePicker made of DatePicker and TimePicker");
         DateTimePicker dateTimePicker = new DateTimePicker();
-        
-        add(customComponent1H1, dateTimePicker);
-        
-        
-    }
 
-    
+        add(customComponent1H1, dateTimePicker);
+
+
+        H1 webComponent1H1 = new H1("simple integration of @polymer/paper-toggle-button ");
+        ToggleButton toggleButton = new ToggleButton();
+        add(webComponent1H1, toggleButton);
+    }
 
 
 
