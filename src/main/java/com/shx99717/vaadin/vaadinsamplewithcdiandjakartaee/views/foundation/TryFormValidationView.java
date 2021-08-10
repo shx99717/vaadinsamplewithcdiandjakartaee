@@ -9,6 +9,7 @@ import com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.views.AppMainEntry;
 import com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.views.validator.NameContainsBadWordsValidator;
 import com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.views.vo.Student;
 import com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.views.vo.StudentType;
+import com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.views.vo.StudentWithBeanValidation;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H3;
@@ -18,6 +19,7 @@ import com.vaadin.flow.component.select.Select;
 import com.vaadin.flow.component.textfield.EmailField;
 import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.data.binder.BeanValidationBinder;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.validator.EmailValidator;
 import com.vaadin.flow.data.validator.IntegerRangeValidator;
@@ -34,6 +36,8 @@ public class TryFormValidationView extends VerticalLayout {
         addStudentForm1();
         
         addStudentForm2();
+        
+        addStudentForm3();
     }
 
     private void addStudentForm1() {
@@ -182,6 +186,40 @@ public class TryFormValidationView extends VerticalLayout {
         // binder.forField(street).bind("address.street");
         // binder.forField(postcode).bind("address.postcode");
         
+         
+    }
+    
+    
+    
+    private void addStudentForm3() {
+        TextField firstName = new TextField("First Name");
+        TextField secondName = new TextField("Last Name");
+        IntegerField age = new IntegerField("Age");
+        EmailField email = new EmailField("Email");
+        Select<StudentType> studentType = new Select<>();
+        
+        
+        H1 h1 = new H1("Student Form Validation - Bean validation");
+        FormLayout formLayout = new FormLayout();
+        
+        studentType.setLabel("Student Type");
+        studentType.setItems(Arrays.asList(StudentType.values()));
+        
+        
+        formLayout.add(firstName, secondName, age, email, studentType);
+        
+        add(h1, formLayout);
+        
+        
+        // Option 2: Use reflection to scan class for properties so you can bind by property name
+        // Pros: able to use bean validation
+        // Cons: no type safe, the code will be broken if the property name changes
+         BeanValidationBinder<StudentWithBeanValidation> binder = new BeanValidationBinder<>(StudentWithBeanValidation.class);
+         binder.forField(firstName).bind("firstName"); 
+         binder.forField(secondName).bind("lastName");
+         binder.forField(age).bind("age");
+         binder.forField(email).bind("email");
+         binder.forField(studentType).bind("type");
          
     }
 
