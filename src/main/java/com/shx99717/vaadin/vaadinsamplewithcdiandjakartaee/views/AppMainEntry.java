@@ -1,5 +1,7 @@
 package com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.views;
 
+import com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.views.foundation.TrySelectionComponentsView;
+import com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.views.foundation.TryDataBindingAndProviderView;
 import com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.views.foundation.TryFlexLayoutView;
 import com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.views.foundation.TryFormConversionView;
 import com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.views.foundation.TryFormDatabindingBufferedWayView;
@@ -39,7 +41,9 @@ public class AppMainEntry extends AppLayout {
         tabs.add(createTab("Try form conversion", TryFormConversionView.class));
         tabs.add(createTab("Try very simple custom component", TryVerySimpleCustomComponentView.class));
         tabs.add(createTab("Try grid basic", TryGridBasicView.class));
-        
+        tabs.add(createTab("Try selection components", TrySelectionComponentsView.class));
+        tabs.add(createTab("Try data binding and provider", TryDataBindingAndProviderView.class));
+
         VerticalLayout drawerContent = new VerticalLayout();
         drawerContent.add(tabs);
         addToDrawer(drawerContent);

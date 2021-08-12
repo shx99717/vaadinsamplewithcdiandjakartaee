@@ -5,6 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +17,7 @@ import com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.views.vo.StudentType;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.Grid.Column;
+import com.vaadin.flow.component.grid.Grid.SelectionMode;
 import com.vaadin.flow.component.grid.HeaderRow;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Label;
@@ -47,6 +49,8 @@ public class TryGridBasicView extends VerticalLayout {
         addGrid3();
         
         addGrid4();
+        
+        addGrid5();
     }
 
 
@@ -59,7 +63,11 @@ public class TryGridBasicView extends VerticalLayout {
 
         add(h1, grid);
         
-        grid.setItems(getDummyStudents(20));
+        // accept collection
+        // grid.setItems(getDummyStudents(20));
+        // accept stream
+        grid.setItems(getDummyStudents(20).stream().filter(s -> s.getFirstName().contains("1")));
+        
     }
     
     private void addGrid2() {
@@ -188,7 +196,7 @@ public class TryGridBasicView extends VerticalLayout {
         
         
         
-        // Showing Item Details
+        // Showing Item Details(Good options for mobile display)
         // Often you don’t want to overwhelm the user with a complex grid with all the information about each item, 
         // but instead show just the basic information by default and hide the details. For this purpose, grid supports 
         // expanding its rows for showing additional details for the items. 
@@ -246,6 +254,25 @@ public class TryGridBasicView extends VerticalLayout {
         
         grid.setItems(getDummyStudents(20));
         
+    }
+    
+    
+    private void addGrid5() {
+        H1 h1 = new H1("Selection Mode");
+        Grid<Student> grid = new Grid<>(Student.class);
+
+        add(h1, grid);
+        
+        grid.setItems(getDummyStudents(20));
+        grid.setSelectionMode(SelectionMode.MULTI);
+        
+        Button button = new Button("Get values");
+        button.addClickListener(e -> {
+           Set<Student> students = grid.asMultiSelect().getValue();
+           Notification.show("There are " + students.size() + " selected");
+        });
+        
+        add(button);
     }
     
     private List<Student> getDummyStudents(int amount) {
