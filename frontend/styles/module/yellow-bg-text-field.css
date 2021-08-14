@@ -1,0 +1,10 @@
+/* check the usage at Theme2WithCSSView.java */
+/* 
+	If you want to know the custom properties of a particular component
+	Please visit vaadin's component page, and check the HTML component rather than Java
+	e.g. for vaadin-text-field, visit https://vaadin.com/components/vaadin-text-field/html-api
+	there are details about the part that we can style
+*/
+[part="input-field"] {
+	background: yellow;
+}

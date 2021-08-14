@@ -10,3 +10,36 @@
   max-width: 250px;
 }
 
+
+.student-form-header {
+	border: 1px solid red;
+	/* 
+		The change of css will be directly applied to the application picked by webpack and its server, 
+		no need to reboot the application server during development
+	*/
+	background-color: green;
+}
+
+div.vaadin-logo {
+	background-image: url(img/vaadin-logo.png);
+	width: 400px;
+	height: 200px;
+}
+
+
+/*
+Lumo defines global CSS variables that you can use to make adjustments to the styles.
+Also Lumo variables support scope by selector, see below
+
+check the details and the available variables, see here https://vaadin.com/themes/lumo
+or use the Lumo Editor online
+*/
+html {
+	/* All the components will have 20px border radius except the Vaadin button */
+	--lumo-border-radius: 20px;
+}
+
+vaadin-button {
+	/* Vaadin button will have 1px border radius */
+	--lumo-border-radius: 1px;
+}

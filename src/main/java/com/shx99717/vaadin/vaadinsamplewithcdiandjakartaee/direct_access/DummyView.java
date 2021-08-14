@@ -18,7 +18,7 @@ import com.vaadin.flow.router.Route;
  */
 @Route("dummy")
 @CssImport("./styles/shared-styles.css")
-@CssImport(value = "./styles/vaadin-text-field-styles.css", themeFor = "vaadin-text-field")
+@CssImport(value = "./styles/module/vaadin-text-field-styles.css", themeFor = "vaadin-text-field")
 public class DummyView extends VerticalLayout {
     
     @Inject
