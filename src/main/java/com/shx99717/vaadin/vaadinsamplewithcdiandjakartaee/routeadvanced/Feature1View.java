@@ -1,4 +1,4 @@
-package com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.views.routing;
+package com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.routeadvanced;
 
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.HasComponents;

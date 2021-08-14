@@ -1,4 +1,4 @@
-package com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.views.routing;
+package com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.routeadvanced;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,4 +1,4 @@
-package com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.route;
+package com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.routebasic;
 
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;

@@ -1,4 +1,4 @@
-package com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.route;
+package com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.routebasic;
 
 import java.util.UUID;
 

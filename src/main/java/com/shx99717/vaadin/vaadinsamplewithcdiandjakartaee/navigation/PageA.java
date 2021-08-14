@@ -1,7 +1,7 @@
 package com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.navigation;
 
-import com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.route.Page1;
-import com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.route.Page2;
+import com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.routebasic.Page1;
+import com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.routebasic.Page2;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.H1;
