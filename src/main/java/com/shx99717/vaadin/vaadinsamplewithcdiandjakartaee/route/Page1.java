@@ -8,6 +8,8 @@ import com.vaadin.flow.router.RouteAlias;
 
 //@Route("") this will be the root context
 @PageTitle("This is the page 1")
+// When defining Route using @Route(".."), the component will by default
+// be rendered inside <body> tag
 @Route("page1")
 @RouteAlias("page_one")
 @RouteAlias("page_yi")
