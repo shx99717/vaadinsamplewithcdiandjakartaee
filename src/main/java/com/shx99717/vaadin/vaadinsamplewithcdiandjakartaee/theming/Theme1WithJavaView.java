@@ -34,8 +34,8 @@ import com.vaadin.flow.theme.lumo.Lumo;
  */
 @Route("theme1")
 // add @Theme to the root layout to select a theme, two predefined theme, [Lumo|Material], where Lumo is the default if nothing is specified 
-//@Theme(value = Lumo.class, variant = Lumo.LIGHT)
-@Theme(value = Lumo.class, variant = Lumo.DARK)
+@Theme(value = Lumo.class, variant = Lumo.LIGHT)
+//@Theme(value = Lumo.class, variant = Lumo.DARK)
 //@Theme(value = Material.class, variant = Material.LIGHT)
 //@Theme(value = Material.class, variant = Material.DARK)
 public class Theme1WithJavaView extends VerticalLayout {

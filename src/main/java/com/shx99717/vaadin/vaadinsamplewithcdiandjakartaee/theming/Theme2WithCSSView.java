@@ -84,7 +84,6 @@ import com.vaadin.flow.theme.lumo.Lumo;
 @Route("theme2")
 @CssImport("styles/shared-styles.css") // Global way for non shadow DOM and general etc
 @CssImport(value = "styles/module/yellow-bg-text-field.css", themeFor = "vaadin-text-field") // Local way for shadow DOM
-@Theme(value = Lumo.class, variant = Lumo.LIGHT)
 public class Theme2WithCSSView extends VerticalLayout {
     
     @Inject
@@ -136,6 +135,15 @@ public class Theme2WithCSSView extends VerticalLayout {
         H1 webComponent1H1 = new H1("simple integration of @polymer/paper-toggle-button ");
         ToggleButton toggleButton = new ToggleButton();
         add(webComponent1H1, toggleButton);
+        
+        
+        TextField textField2 = new TextField("Dummy field 1");
+        TextField textField3 = new TextField("Dummy field 2 - with class .special-blue on shadow DOM root");
+        textField3.addClassName("special-blue");
+        TextField textField4 = new TextField("Dummy field 3");
+        TextField textField5 = new TextField("Dummy field 4 - with class .special-blue on shadow DOM root");
+        textField5.addClassName("special-blue");
+        add(textField2, textField3, textField4, textField5);
     }
 
     

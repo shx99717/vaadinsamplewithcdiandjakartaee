@@ -5,6 +5,36 @@
 	e.g. for vaadin-text-field, visit https://vaadin.com/components/vaadin-text-field/html-api
 	there are details about the part that we can style
 */
+/*
+Selects a shadow root host
+:host {
+
+}
+
+Selects a shadow root host only if it is matched by the selector argument
+:host(.some-class-name) {
+
+}
+
+Selects any element placed inside a slot
+::slotted(*) {
+
+}
+
+Selects any <span> placed inside a slot
+::slotted(span) {
+
+}
+*/
+
+/* All the <vaadin-text-field> will be yellow */
 [part="input-field"] {
 	background: yellow;
 }
+
+
+/* Only the <vaadin-text-field> with a class 'special-blue' will be blue */
+:host(.special-blue) [part="input-field"] {
+	background: blue;
+}
+
