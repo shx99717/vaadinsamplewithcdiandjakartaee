@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+/*
+When a custom theme is applied to the application, the master style sheet styles.css 
+is loaded automatically as global CSS.
+
+Besides the component styles(local styles) in the components folder, all other style
+sheets need to be included here via CSS @import statements
+
+The master style sheet typically contains:
+   | (1). Imports of other global style sheets within the theme folder.
+   | (2). Overrides of default Lumo properties and declarations of custom CSS properties.
+   | (3). Styles applied to UI elements through class names and other CSS selectors.
+
+
+*/
+
+
+/* e.g. (1) @import other-style.css */
+
+
+/* e.g. (2)
+CSS custom properties (for example, for overriding Lumo defaults) are recommended to 
+use the selector "html,:host",  to ensure that they are applied when the theme is applied to an
+embedded application or components 
+
+html, :host {
+  
+}
+
+*/
+
+
+/* e.g. (3)
+.application-header {
+  background: white;
+  border-bottom: 1px solid gray;
+}
+*/
+
+html {
+	background-color: purple;
+}

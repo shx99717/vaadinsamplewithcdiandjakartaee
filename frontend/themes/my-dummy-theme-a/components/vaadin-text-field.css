@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+[part="label"] {
+	font-style: italic;
+}
+
+[part="input-field"] {
+	background: lime;
+}

@@ -34,7 +34,10 @@ import com.vaadin.flow.theme.lumo.Lumo;
  * Visit directly by http://localhost:8080/theme3
  */
 @Route("theme3")
-@CssImport(value = "styles/module/highlighted-grid.css", themeFor = "vaadin-grid")
+//if the @Theme here is enabled, please disable all other @Theme annotation, otherwise during the bootup
+//Vaadin will scan the classes and find multiple definition of used theme
+//also comment out for @CssImport on elsewhere, otherwise it will overwrite the component styling under themes/<theme-name>/components/
+//@CssImport(value = "styles/module/highlighted-grid.css", themeFor = "vaadin-grid")
 public class StylingTheGridView extends VerticalLayout {
     
     @Inject

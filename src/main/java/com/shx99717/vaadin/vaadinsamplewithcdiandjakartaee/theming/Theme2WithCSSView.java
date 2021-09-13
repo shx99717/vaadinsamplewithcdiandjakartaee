@@ -82,8 +82,11 @@ import com.vaadin.flow.theme.lumo.Lumo;
  * 
  */
 @Route("theme2")
-@CssImport("styles/shared-styles.css") // Global way for non shadow DOM and general etc
-@CssImport(value = "styles/module/yellow-bg-text-field.css", themeFor = "vaadin-text-field") // Local way for shadow DOM
+//if the @Theme here is enabled, please disable all other @Theme annotation, otherwise during the bootup
+//Vaadin will scan the classes and find multiple definition of used theme
+//also comment out for @CssImport on elsewhere, otherwise it will overwrite the component styling under themes/<theme-name>/components/
+//@CssImport("styles/shared-styles.css") // Global way for non shadow DOM and general etc
+//@CssImport(value = "styles/module/yellow-bg-text-field.css", themeFor = "vaadin-text-field") // Local way for shadow DOM
 public class Theme2WithCSSView extends VerticalLayout {
     
     @Inject

@@ -1,0 +1,263 @@
+As the internal styling of Vaadin components is isolated from the global CSS inside the 
+component’s shadow DOM, the easiest way to customize their styles is through the CSS 
+properties available in the built-in themes (see Foundation section for details), 
+and by injecting custom CSS directly into the shadow DOM of the components by placing 
+them in the components sub-folder.
+
+To inject CSS into the shadow DOM of a Vaadin component, create a style sheet whose 
+name matches the web component HTML element name of the component in the components 
+sub-folder. As an example, to apply styling to the vaadin-button component, create a 
+style sheet called vaadin-button.css.
+
+frontend
+└── themes
+    └── my-theme
+        ├── components
+        │   ├── vaadin-button.css
+        │   └── vaadin-text-field.css
+        └── styles.css
+        
+        
+        
+This style injection is based on a feature used by Vaadin components called Themable 
+Mixin(https://github.com/vaadin/vaadin-themable-mixin). You can create your own web components that use the same feature to make them 
+support this theming mechanism.
+
+The web platform doesn’t currently provide a way to write selectors in the global scope
+that would match elements in a local scope (Oct 2017). There’s a CSS spec proposal 
+that will add that, but for now, we need to work around this limitation using proprietary
+solutions, like Vaadin’s ThemableMixin.
+
+Custom elements extending ThemableMixin allow you to inject styles into their local scope by defining new style modules in the global scope. You specify the targeted element using the theme-for attribute. 
+<!-- Define a theme module (in index.html or in a separate HTML import) -->
+<dom-module id="my-theme-module" theme-for="my-element">
+  <template>
+    <style>
+      /* Styles which will be included in my-element local scope */
+    </style>
+  </template>
+</dom-module>  
+
+Note: a theme module needs to be imported and registered in the DOM before the 
+element(s), which the module targets with the theme-for attribute, are registered 
+and upgraded (before the first instantiation of the component).
+
+The id attribute of the theme module should be unique. You can also re-use an existing id if you want to override a previously defined/imported module.
+The value of the theme-for attribute can be a space-separated list of element names, and can contain wildcard element names as well.
+
+
+Stylable Shadow Parts
+  | Host element - The host element is the main element which has a shadow DOM, for example <vaadin-text-field>.
+  | Named parts (part="_part-name_")- In addition to the host element, only certain elements inside a themable element (i.e. an element extending ThemableMixin) should be styled.
+                  Other elements should be considered as internal implementation details, and you should not expect these elements to remain constant or be available in the future.
+                  The stylable elements have the part attribute, which gives the elements a descriptive name.
+                  Check the API documentation to know the stylable parts of each Vaadin component, e.g. https://vaadin.com/components/vaadin-text-field/html-api/elements/Vaadin.TextFieldElement#styling
+
+
+<<<<<<<<<<Supported selectors>>>>>>>>>>>>>
+================
+==== :host
+================
+The host element can be targeted using the :host selector.
+
+<dom-module id="my-button" theme-for="vaadin-button">
+  <template>
+    <style>
+      :host {
+        /* Styles for vaadin-button element */
+      }
+    </style>
+  </template>
+</dom-module>
+
+================
+==== [part="..."]
+================
+The stylable elements (marked with a part attribute) should only be targeted using the [part="..."] attribute selector.
+
+<dom-module id="my-text-field" theme-for="vaadin-text-field">
+  <template>
+    <style>
+      [part="input-field"] {
+        /* Styles for vaadin-text-field's input-field part */
+      }
+    </style>
+  </template>
+</dom-module>
+
+
+================
+==== [part~="..."]
+================
+Use part~="..." to match a part which might have multiple names, for example the cells inside a <vaadin-grid> which can have multiple names like "cell" and "body-cell".
+You can use this kind of attribute selector in all cases, if you want to be safe. It will work for parts with only one name as well.
+
+<dom-module id="my-grid" theme-for="vaadin-grid">
+  <template>
+    <style>
+      [part~="cell"] {
+        /* Styles that affect all grid cells, including header, body and footer cells */
+      }
+
+      [part~="body-cell"] {
+        /* Styles that only affect all body cells */
+      }
+    </style>
+  </template>
+</dom-module>     
+
+
+================
+==== State attributes
+================  
+Some custom elements expose some of their internal state as top-level attributes for styling purposes. You can find these attributes in the elements API documentation.
+For example, you can target styles for a disabled <vaadin-button> using the disabled attribute in combination with the :host selector:         
+
+<dom-module id="my-button" theme-for="vaadin-button">
+  <template>
+    <style>
+      :host([disabled]) {
+        /* Styles for disabled vaadin-button element */
+      }
+    </style>
+  </template>
+</dom-module>
+
+
+You can also target any named parts in a specific state of the host. For example, you can add a red border for the input-field part of a <vaadin-text-field> which is marked invalid:
+
+<dom-module id="my-text-field" theme-for="vaadin-text-field">
+  <template>
+    <style>
+      :host([invalid]) [part="input-field"] {
+        border: 1px solid red;
+      }
+    </style>
+  </template>
+</dom-module>
+
+
+Similarly to the host element, the named parts can also expose state attributes for themselves, which can be used for styling. These are also listed in the element’s API documentation.
+For example, you can target a selected date in a <vaadin-date-picker>:
+
+<dom-module id="my-month-calendar-styles" theme-for="vaadin-month-calendar">
+  <template>
+    <style>
+     [part~="date"][selected] {
+       /* Styles for a selected date */
+     }
+   </style>
+  </template>
+</dom-module>
+
+
+
+
+<<<<<<<<Scoping Styles in a Theme Module>>>>>>>>
+The styles defined in a “theme module” affect all the instances of the element the module targets with the theme-for attribute.
+
+There are two ways to scope the styles that you write in a theme module.
+
+(1). Expose new custom properties This is the recommended first option for simple situations. If you end up exposing more than a handful of properties, you should consider the second option.
+(2). Use scoping selectors This approach is used by the built-in variations in Vaadin themes (Lumo and Material), i.e. theme attribute. The downside of this approach is that you end up adding the selectors and properties to all instances, even though only some instances will need those styles (they won’t apply unless the scoping selector is used on the host element).
+
+================
+Example: (1) expose new custom properties
+================
+<!-- Define the theme module (in index.html or in a separate HTML import) -->
+<dom-module id="my-text-field-theme" theme-for="vaadin-text-field">
+  <template>
+    <style>
+      [part="input-field"] {
+        background-color: var(--input-field-background-color, #fff);
+      }
+    </style>
+  </template>
+</dom-module>
+
+<!-- Use the new custom property -->
+<custom-style>
+  <style>
+    .some-part-of-my-app vaadin-text-field {
+     --input-field-background-color: #eee;
+    }
+  </style>
+</custom-style>
+
+<div class="some-part-of-my-app">
+  <vaadin-text-field></vaadin-text-field>
+</div>
+
+
+================
+Example: (2) use scoping selectors
+================
+<!-- Define the theme module (in index.html or in a separate HTML import) -->
+<dom-module id="my-text-field-theme" theme-for="vaadin-text-field">
+  <template>
+    <style>
+      :host(.special-field) [part="input-field"] {
+        background-color: #000;
+        color: #fff;
+        border: 2px solid #fff;
+        border-radius: 9px;
+      }
+    </style>
+  </template>
+</dom-module>
+
+<!-- Use the new scoping selector anywhere in your app -->
+<div>
+  <vaadin-text-field class="special-field"></vaadin-text-field>
+</div>
+
+================
+Example: (2) use theme selectors
+================
+<!-- Define the theme module (in index.html or in a separate HTML import) -->
+<dom-module id="special-field-theme" theme-for="vaadin-text-field">
+  <template>
+    <style>
+      :host([theme~="special-field"]) [part="input-field"] {
+        background-color: #000;
+        color: #fff;
+        border: 2px solid #fff;
+        border-radius: 9px;
+      }
+    </style>
+  </template>
+</dom-module>
+
+<!-- Apply the theme attribute to any text-field in your app -->
+<div>
+  <vaadin-text-field theme="special-field"></vaadin-text-field>
+</div>
+
+
+
+<<<<<<<Theme Attribute and Subcomponents>>>>>>>>
+Sometimes components using VaadinThemableMixin are contained in Shadow DOM of other components. In such a case, we propagate the theme attribute of the host web component to subcomponents.
+For example, Vaadin components using <vaadin-text-field> is used as an internal input field subcomponent, including <vaadin-combo-box>, <vaadin-date-picker>, and so on, propagate the theme attribute. You can use theme variants defined for <vaadin-text-field> in, e. g., <vaadin-combo-box>, and this will affect the internal subcomponent:
+
+================
+Example: using small Lumo theme variant on <vaadin-combo-box>
+================
+<vaadin-combo-box theme="small"></vaadin-combo-box>
+the theme="small" will be propagate to the internal subcomponent <vaadin-text-field>, therefore enable us to match the selector
+<!-- Define the theme module (in index.html or in a separate HTML import) -->
+<dom-module id="special-field-theme" theme-for="vaadin-text-field">
+  <template>
+    <style>
+      :host([theme~="special-field"]) [part="input-field"] {
+        background-color: #000;
+        color: #fff;
+        border: 2px solid #fff;
+        border-radius: 9px;
+      }
+    </style>
+  </template>
+</dom-module>
+
+<!-- Apply the theme attribute to <vaadin-combo-box>, but will propagate to the internal subcomponents-->
+<vaadin-combo-box theme="special-field"></vaadin-combo-box>
+

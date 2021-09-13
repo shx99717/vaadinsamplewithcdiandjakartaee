@@ -32,19 +32,28 @@ import com.vaadin.flow.theme.lumo.Lumo;
 import com.vaadin.flow.theme.material.Material;
 
 /**
- * Visit directly by http://localhost:8080/theme1
+ * Visit directly by http://localhost:8080/theme4
+ * 
+ * 
+ * frontend
+ * └── themes            (1)
+ *   └── my-theme        (2)
+ *       ├── components/ (3)
+ *       └── styles.css  (4)
+ * 
+ * 1. The themes folder can contain multiple custom themes (but only one can be applied to the application at a time).
+ * 2. Each theme is in its own sub-folder. The name of this folder is provided as a parameter to the @Theme annotation to apply the theme to the application.
+ * 3. The components sub-folder is for component style sheets that target the (local CSS) internals of Vaadin components.
+ * 4. styles.css is the theme’s master style sheet that is automatically loaded when the theme is applied.
+ * 
+ * read more on frontend/themes/my-dummy-theme-a/styles.css and components_styling_explained.txt
  */
-@Route("theme1")
-// add @Theme to the root layout to select a theme, two predefined theme, [Lumo|Material], where Lumo is the default if nothing is specified
-//if the @Theme here is enabled, please disable all other @Theme annotation, otherwise during the bootup
-//Vaadin will scan the classes and find multiple definition of used theme
-//also comment out for @CssImport on elsewhere, otherwise it will overwrite the component styling under themes/<theme-name>/components/
-//@Theme(value = Lumo.class, variant = Lumo.LIGHT)
-//@NoTheme
-//@Theme(value = Lumo.class, variant = Lumo.DARK)
-//@Theme(value = Material.class, variant = Material.LIGHT)
-//@Theme(value = Material.class, variant = Material.DARK)
-public class Theme1WithJavaView extends VerticalLayout {
+@Route("theme4")
+// if the @Theme here is enabled, please disable all other @Theme annotation, otherwise during the bootup
+// Vaadin will scan the classes and find multiple definition of used theme
+// also comment out for @CssImport on elsewhere, otherwise it will overwrite the component styling under themes/<theme-name>/components/
+@Theme(themeFolder = "my-dummy-theme-a")
+public class CustomThemeView1 extends VerticalLayout {
     
     @Inject
     private GreetService greetService;
