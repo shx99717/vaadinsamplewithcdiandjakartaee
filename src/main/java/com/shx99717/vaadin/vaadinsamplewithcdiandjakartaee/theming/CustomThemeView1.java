@@ -52,7 +52,7 @@ import com.vaadin.flow.theme.material.Material;
 // if the @Theme here is enabled, please disable all other @Theme annotation, otherwise during the bootup
 // Vaadin will scan the classes and find multiple definition of used theme
 // also comment out for @CssImport on elsewhere, otherwise it will overwrite the component styling under themes/<theme-name>/components/
-@Theme(themeFolder = "my-dummy-theme-a")
+//@Theme(themeFolder = "my-dummy-theme-a")
 public class CustomThemeView1 extends VerticalLayout {
     
     @Inject
