@@ -16,6 +16,7 @@ import com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.views.vo.Student;
 import com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.views.vo.StudentType;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
+import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.H1;
@@ -26,10 +27,7 @@ import com.vaadin.flow.component.textfield.EmailField;
 import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.theme.NoTheme;
 import com.vaadin.flow.theme.Theme;
-import com.vaadin.flow.theme.lumo.Lumo;
-import com.vaadin.flow.theme.material.Material;
 
 /**
  * Visit directly by http://localhost:8080/theme4
@@ -52,7 +50,8 @@ import com.vaadin.flow.theme.material.Material;
 // if the @Theme here is enabled, please disable all other @Theme annotation, otherwise during the bootup
 // Vaadin will scan the classes and find multiple definition of used theme
 // also comment out for @CssImport on elsewhere, otherwise it will overwrite the component styling under themes/<theme-name>/components/
-//@Theme(themeFolder = "my-dummy-theme-a")
+@Theme(themeFolder = "my-dummy-theme-a")
+@CssImport(value = "styles/module/special-styles.css", themeFor = "vaadin-button") // Local way for shadow DOM, the whole special-styles.css will be injected to the local scope of <vaadin-button />
 public class CustomThemeView1 extends VerticalLayout {
     
     @Inject
@@ -70,26 +69,12 @@ public class CustomThemeView1 extends VerticalLayout {
     private void addSomeBasic() {
         TextField textField = new TextField("Your name");
 
-        /**
-         * Theme variants
-         * Some components have predefined variants, which allows to change a component's look and
-         * feel quickly
-         */
         Button button = new Button("Say hello",
                 e -> Notification.show(greetService.greet(textField.getValue())));
-        button.addThemeVariants(ButtonVariant.LUMO_ERROR);
-        
+        button.addThemeVariants(ButtonVariant.LUMO_SMALL);
         add(textField, button);
 
-        /**
-         * Most components implement the HasStyle interface, which allows 
-         * 1. Inline styling with getStyle.set()
-         * 2. Add CSS class names with addClassName(s)()
-         * 3. Remove CSS class name(s) with removeClassName(s)()
-         */
         H1 customComponent1H1 = new H1("DateTimePicker made of DatePicker and TimePicker");
-        customComponent1H1.getStyle().set("background-color", "green");
-        customComponent1H1.addClassNames("dummy-class-1", "dummy-class-2");
         DateTimePicker dateTimePicker = new DateTimePicker();
 
         add(customComponent1H1, dateTimePicker);
@@ -103,8 +88,6 @@ public class CustomThemeView1 extends VerticalLayout {
          */
         H1 webComponent1H1 = new H1("simple integration of @polymer/paper-toggle-button ");
         ToggleButton toggleButton = new ToggleButton();
-        toggleButton.getElement().getStyle().set("background-color", "green");
-        toggleButton.getElement().getClassList().add("dummy-class-3");
         add(webComponent1H1, toggleButton);
     }
 

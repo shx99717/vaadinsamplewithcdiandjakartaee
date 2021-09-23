@@ -53,6 +53,7 @@ Stylable Shadow Parts
                   The stylable elements have the part attribute, which gives the elements a descriptive name.
                   Check the API documentation to know the stylable parts of each Vaadin component, e.g. https://vaadin.com/components/vaadin-text-field/html-api/elements/Vaadin.TextFieldElement#styling
 
+Let us digest a concrete example how Vaadin’s ThemableMixin works, see the themable_mixin_digest.txt for more details.
 
 <<<<<<<<<<Supported selectors>>>>>>>>>>>>>
 ================
@@ -232,6 +233,16 @@ Example: (2) use theme selectors
 <div>
   <vaadin-text-field theme="special-field"></vaadin-text-field>
 </div>
+
+Understanding of the theme attribute, this is actually the variant we set via the Java API
+e.g. button.addThemeVariants(ButtonVariant.LUMO_SMALL);
+It will end up with <vaadin-button theme="small"></vaadin-button>
+the css for it will be the local scoped one like
+:host([theme~="small"]) {
+    font-size: var(--lumo-font-size-s);
+    --lumo-button-size: var(--lumo-size-s);
+}
+Where those properties will be inherited from the parent node way up to global scope
 
 
 

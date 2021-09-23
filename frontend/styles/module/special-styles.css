@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+:host {
+	font-size: 30px !important;
+}
+
+:host {
+	font-style: italic !important;
+}
+
+:host {
+	color: #123456 !important;
+}
