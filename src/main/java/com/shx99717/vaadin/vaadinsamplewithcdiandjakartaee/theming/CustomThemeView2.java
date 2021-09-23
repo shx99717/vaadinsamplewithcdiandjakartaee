@@ -31,29 +31,12 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.Theme;
 
 /**
- * Visit directly by http://localhost:8080/theme4
- * 
- * 
- * frontend
- * └── themes            (1)
- *   └── my-theme        (2)
- *       ├── components/ (3)
- *       └── styles.css  (4)
- * 
- * 1. The themes folder can contain multiple custom themes (but only one can be applied to the application at a time).
- * 2. Each theme is in its own sub-folder. The name of this folder is provided as a parameter to the @Theme annotation to apply the theme to the application.
- * 3. The components sub-folder is for component style sheets that target the (local CSS) internals of Vaadin components.
- * 4. styles.css is the theme’s master style sheet that is automatically loaded when the theme is applied.
- * 
- * read more on frontend/themes/my-dummy-theme-a/styles.css and components_styling_explained.txt
+ * Visit directly by http://localhost:8080/theme5
+ * Reference a theme at another jar, the corresponding jar has been added to the pom.xml
  */
-@Route("theme4")
-// if the @Theme here is enabled, please disable all other @Theme annotation, otherwise during the bootup
-// Vaadin will scan the classes and find multiple definition of used theme
-// also comment out for @CssImport on elsewhere, otherwise it will overwrite the component styling under themes/<theme-name>/components/
-//@Theme(themeFolder = "my-dummy-theme-a")
-//@CssImport(value = "styles/module/special-styles.css", themeFor = "vaadin-button") // Local way for shadow DOM, the whole special-styles.css will be injected to the local scope of <vaadin-button />
-public class CustomThemeView1 extends VerticalLayout {
+@Route("theme5")
+@Theme(themeFolder = "my-theme")
+public class CustomThemeView2 extends VerticalLayout {
     
     @Inject
     private GreetService greetService;
@@ -70,7 +53,7 @@ public class CustomThemeView1 extends VerticalLayout {
     private void addSomeBasic() {
         TextField textField = new TextField("Your name");
 
-        Button button = new Button("Say hello",
+        Button button = new Button("Say hi",
                 e -> Notification.show(greetService.greet(textField.getValue())));
         button.addThemeVariants(ButtonVariant.LUMO_SMALL);
         add(textField, button);

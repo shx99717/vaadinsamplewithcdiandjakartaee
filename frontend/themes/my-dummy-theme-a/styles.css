@@ -41,3 +41,7 @@ html, :host {
 html {
 	background-color: purple;
 }
+
+.application-logo {
+	background-image: url("./img/vaadin_logo.png");
+}

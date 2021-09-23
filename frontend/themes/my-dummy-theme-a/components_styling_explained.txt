@@ -272,3 +272,15 @@ the theme="small" will be propagate to the internal subcomponent <vaadin-text-fi
 <!-- Apply the theme attribute to <vaadin-combo-box>, but will propagate to the internal subcomponents-->
 <vaadin-combo-box theme="special-field"></vaadin-combo-box>
 
+
+
+--------------------------------------------------------------------------------------
+When using a custom theme, CSS is loaded in a Vaadin application in the following order:
+  | Lumo styles
+  | Custom theme styles
+  | Manually loaded additional style sheets (for example, using @CssImport in Flow)
+  
+Limitations
+  | The theme cannot be switched run-time.
+  | Custom themes are always loaded on top of the Lumo theme.  
+  | all @import statements need to be in style sheets in the theme root folder.

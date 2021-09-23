@@ -105,6 +105,14 @@
             <version>8.0.0</version>
             <scope>provided</scope>
         </dependency>
+        <!-- 
+        	This references a jar containing a customized vaadin flow theme
+         -->
+        <dependency>
+        	<groupId>com.shx99717</groupId>
+			<artifactId>vaadin-flow-sample-theme</artifactId>
+            <version>1.0.0.2-SNAPSHOT</version>
+        </dependency>
         
         <!--
         The validation-api(Bean Validation JSR-380) has already been included in the jakarta.jakartaee-api above, so we do not need to explicityly add it again 
