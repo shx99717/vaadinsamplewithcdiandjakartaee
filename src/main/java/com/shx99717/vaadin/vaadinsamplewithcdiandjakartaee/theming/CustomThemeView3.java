@@ -31,12 +31,12 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.Theme;
 
 /**
- * Visit directly by http://localhost:8080/theme5
+ * Visit directly by http://localhost:8080/theme6
  * Reference a theme at another jar, the corresponding jar has been added to the pom.xml
  */
-@Route("theme5")
-//@Theme(themeFolder = "my-theme")
-public class CustomThemeView2 extends VerticalLayout {
+@Route("theme6")
+@Theme(themeFolder = "my-extended-theme") // 'my-extended-theme' extends 'my-theme', see 'digest_how_the_sub_theme_works.txt' for more details
+public class CustomThemeView3 extends VerticalLayout {
     
     @Inject
     private GreetService greetService;

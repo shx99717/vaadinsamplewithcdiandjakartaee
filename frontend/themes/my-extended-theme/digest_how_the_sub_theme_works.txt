@@ -1,0 +1,15 @@
+A custom theme can extend another custom theme by configuring a “parent theme” in theme.json. 
+This can be useful for splitting your styles into a base theme shared by all applications, 
+and multiple “sub-themes” for different applications or sub-brands. The parent theme can be in the same project
+ as the sub-theme, or in a separate dependency.
+ 
+The example showing here is, the parent theme is located in a separate jar, the theme in this folder extends the
+parent theme, the CSS loading sequence is:
+
+With a parent and sub theme configuration like this, the CSS load order is as follows:
+1. Lumo styles
+2. Parent theme styles --- my-theme
+3. Sub-theme styles --- my-extended-theme
+4. Manually loaded additional style sheets (for example, using @CssImport in Flow)
+   for @CssImport, it can only import the styles under frontend folder of the client/current/target project, there is 
+   no way to @CssImport the file in a separate jar, e.g. from the my-theme jar
