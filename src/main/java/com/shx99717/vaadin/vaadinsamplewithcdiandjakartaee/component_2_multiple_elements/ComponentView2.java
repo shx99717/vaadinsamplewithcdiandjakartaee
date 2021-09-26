@@ -1,4 +1,4 @@
-package com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.component_multiple_elements;
+package com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.component_2_multiple_elements;
 
 import javax.annotation.PostConstruct;
 

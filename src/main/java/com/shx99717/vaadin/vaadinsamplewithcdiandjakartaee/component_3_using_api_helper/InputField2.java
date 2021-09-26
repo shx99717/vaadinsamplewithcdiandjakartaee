@@ -1,4 +1,4 @@
-package com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.component_using_api_helper;
+package com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.component_3_using_api_helper;
 
 import java.util.Optional;
 
