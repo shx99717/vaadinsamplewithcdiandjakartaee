@@ -114,6 +114,15 @@
             <version>1.0.0.2-SNAPSHOT</version>
         </dependency>
         
+        <!-- 
+        	This references a jar containing an own-made Vaadin flow addon
+         -->
+        <dependency>
+        	<groupId>org.vaadin.addons</groupId>
+		    <artifactId>vaadin-flow-sample-addon-paper-slider</artifactId>
+		    <version>1.0.0.1-SNAPSHOT</version>
+        </dependency>
+        
         <!--
         The validation-api(Bean Validation JSR-380) has already been included in the jakarta.jakartaee-api above, so we do not need to explicityly add it again 
         
