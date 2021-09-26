@@ -21,3 +21,11 @@ The site [https://www.webcomponents.org/](https://www.webcomponents.org/) contai
 To be able to use a Web Component in Vaadin you need:
 - To load the HTML/JS/CSS files needed by the component (see instructions below).
 - A Java API to configure the component and listen to events from it.
+
+While you can start from scratch and do it all manually, the easiest way is to use the [Vaadin Add-on Starter](https://vaadin.com/start/lts/component). This gives you:
+- A project with all the necessary dependencies.
+- An npm import for the selected component.
+- A stub component Java class for your Web Component integration.
+- A Maven profile that handles everything necessary to deploy the component to Vaadin Directory.
+
+I have built a sample with the Add-on Starter[Vaadin Flow sample addon paper slider](https://github.com/shx99717/vaadin-flow-sample-addon-paper-slider)
