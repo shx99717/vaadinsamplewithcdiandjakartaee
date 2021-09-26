@@ -4,7 +4,9 @@ import javax.annotation.PostConstruct;
 
 import org.vaadin.addons.PaperSlider;
 
+import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 
 /**
