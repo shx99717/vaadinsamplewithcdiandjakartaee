@@ -1,0 +1,24 @@
+/*
+
+- initial: resets all of the selected element’s properties to their initial values as defined in the CSS spec.
+- inherit: the selected element inherits all of its parent element’s styling, including styles that are not normally inheritable.
+- unset: the selected element inherits any inheritable values passed down from the parent element. If no inheritable value is available, the initial value from the CSS spec is used for each property.
+
+
+If we like we can also reset the styles inside the shadow dom, but normally we just want to reset the global styles
+These styles will be injected into the local shadow dom.
+
+:host {
+	all: initial !important;
+}
+
+:host * {
+  all: unset !important;
+}
+
+:host style {
+	display: none !important;
+}
+
+*/
+

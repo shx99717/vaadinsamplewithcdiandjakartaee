@@ -15,12 +15,12 @@ import com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.views.vo.Address;
 import com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.views.vo.Student;
 import com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.views.vo.StudentType;
 import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.select.Select;
@@ -29,20 +29,24 @@ import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.Theme;
+import com.vaadin.flow.theme.lumo.Lumo;
 
 /**
- * Visit directly by http://localhost:8080/theme6
- * Reference a theme at another jar, the corresponding jar has been added to the pom.xml
+ * Visit directly by http://localhost:8080/theme_reset
  */
-@Route("theme6")
-//@Theme(themeFolder = "my-extended-theme") // 'my-extended-theme' extends 'my-theme', see 'digest_how_the_sub_theme_works.txt' for more details
-public class CustomThemeView3 extends VerticalLayout {
+@Route("theme_reset")
+@CssImport("styles/reset.css") // Global way for non shadow DOM and general etc
+@CssImport(value = "styles/module/module-reset.css", themeFor = "vaadin-*") // Local way for shadow DOM
+public class GlobalResetStyleView extends VerticalLayout {
     
     @Inject
     private GreetService greetService;
 
     @PostConstruct
     public void init() {
+    	// We will reset all styles under class 'my-theme-reset'
+    	addClassName("my-theme-reset");
+    	
         addSomeBasic();
         
         addStudentForm1();
@@ -51,11 +55,31 @@ public class CustomThemeView3 extends VerticalLayout {
     }
     
     private void addSomeBasic() {
+        /**
+         * Static Resources:
+         * - for project with war packaging, the resources should be located under the src/main/webapp directory
+         *   e.g. src/main/img/vaadin-logo.png
+         * - for jar packaging(Sprint project, Addon project), the resources should be located under
+         *   src/main/resources/META-INF/resources directory
+         *   e.g. src/main/resources/META-INF/resources/img/logo.jpg
+         * 
+         */
+        Image logo = new Image("img/vaadin-logo.png", "The Vaadin Logo");
+        logo.setWidth("300px");
+        add(logo);
+        
+        
+        Div divWithLogoAsBackground = new Div();
+        divWithLogoAsBackground.setText("the vaadin logo here");
+        divWithLogoAsBackground.addClassName("vaadin-logo");
+        add(divWithLogoAsBackground);
+        
+        
         TextField textField = new TextField("Your name");
 
-        Button button = new Button("Say hi",
+        Button button = new Button("Say hello",
                 e -> Notification.show(greetService.greet(textField.getValue())));
-        button.addThemeVariants(ButtonVariant.LUMO_SMALL);
+        
         add(textField, button);
 
         H1 customComponent1H1 = new H1("DateTimePicker made of DatePicker and TimePicker");
@@ -64,22 +88,18 @@ public class CustomThemeView3 extends VerticalLayout {
         add(customComponent1H1, dateTimePicker);
 
 
-        /**
-         * For components that are NOT implementing the HasStyle interface, we can use Element API
-         * 1. Inline styling with component.getElement().getStyle().set()
-         * 2. Add CSS class names with component.getElement().getClassList().add()
-         * 3. Remove CSS class name(s) with component.getElement().getClassList().remove()
-         */
         H1 webComponent1H1 = new H1("simple integration of @polymer/paper-toggle-button ");
         ToggleButton toggleButton = new ToggleButton();
         add(webComponent1H1, toggleButton);
         
-        Div div = new Div();
-        div.setText("This is a div");
-        div.addClassName("application-logo");
-        div.setWidth("800px");
-        div.setHeight("300px");
-        add(div);
+        
+        TextField textField2 = new TextField("Dummy field 1");
+        TextField textField3 = new TextField("Dummy field 2 - with class .special-blue on shadow DOM root");
+        textField3.addClassName("special-blue");
+        TextField textField4 = new TextField("Dummy field 3");
+        TextField textField5 = new TextField("Dummy field 4 - with class .special-blue on shadow DOM root");
+        textField5.addClassName("special-blue");
+        add(textField2, textField3, textField4, textField5);
     }
 
     
@@ -95,6 +115,10 @@ public class CustomThemeView3 extends VerticalLayout {
         
         
         H1 h1 = new H1("Student Form");
+        /*
+         * Here is the place to add the class and the class is in shared-style.css under frontend/styles folder
+         */
+        h1.addClassName("student-form-header");
         FormLayout formLayout = new FormLayout();
         
         studentType.setLabel("Student Type");

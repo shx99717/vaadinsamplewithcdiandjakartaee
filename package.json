@@ -47,6 +47,7 @@
     "@vaadin/vaadin-upload": "4.4.1",
     "@webcomponents/webcomponentsjs": "^2.2.10",
     "construct-style-sheets-polyfill": "2.4.16",
+    "jquery": "3.1.1",
     "lit-element": "2.5.1",
     "lit-html": "1.4.1"
   },
@@ -120,6 +121,7 @@
       "@vaadin/vaadin-upload": "4.4.1",
       "@webcomponents/webcomponentsjs": "^2.2.10",
       "construct-style-sheets-polyfill": "2.4.16",
+      "jquery": "3.1.1",
       "lit-element": "2.5.1",
       "lit-html": "1.4.1"
     },
@@ -143,6 +145,6 @@
       "webpack-dev-server": "3.11.0",
       "webpack-merge": "4.2.2"
     },
-    "hash": "14f1a1a517a27af3fc4b7cbdb327d5154a1b707b2110d514baf4b45910b69ac5"
+    "hash": "8f41ec759436a2b56af3f474c5b113c2c453f3dad9c8d67d43eb25b53a0f9f81"
   }
 }

@@ -1,0 +1,18 @@
+/*
+- initial: resets all of the selected element’s properties to their initial values as defined in the CSS spec.
+- inherit: the selected element inherits all of its parent element’s styling, including styles that are not normally inheritable.
+- unset: the selected element inherits any inheritable values passed down from the parent element. If no inheritable value is available, the initial value from the CSS spec is used for each property.
+*/
+
+.my-theme-reset {
+	all: initial !important;
+}
+
+.my-theme-reset * {
+  all: unset !important;
+}
+
+.my-theme-reset style {
+	display: none !important;
+}
+
