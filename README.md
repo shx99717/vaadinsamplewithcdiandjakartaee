@@ -14,7 +14,7 @@ Run application using
 mvn clean package tomee:run
 ```
 
-_Warning, make sure stop the services of apache and wildfly if they are running on the same machine_
+_Warning, make sure to stop the services of Apache and Wildfly if they are running on the same machine_
 
 Open [http://localhost:8080/](http://localhost:8080/) in browser.
 
