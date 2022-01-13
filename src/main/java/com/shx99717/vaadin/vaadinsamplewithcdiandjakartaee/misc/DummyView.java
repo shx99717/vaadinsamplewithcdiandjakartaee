@@ -1,4 +1,4 @@
-package com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.direct_access;
+package com.shx99717.vaadin.vaadinsamplewithcdiandjakartaee.misc;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
